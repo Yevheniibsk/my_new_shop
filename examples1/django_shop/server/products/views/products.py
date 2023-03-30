@@ -96,19 +96,37 @@ class ProductDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def product_rest_list():
-    object_list = Product.objects.all()
-    data = []
+     object_list = Product.objects.all()
+     data = []
 
-    for itm in object_list:
-        data.append(
-            {
-                'id': itm.id,
-                'name': itm.name,
-                'price_now': itm.price_now,
-                'price_old': itm.price_old,
-                'image_url': itm.image.url if itm.image else None,
-                'status': itm.status
-            }
-        )
+     for itm in object_list:
+         data.append(
+             {
+                 'id': itm.id,
+                 'name': itm.name,
+                 'price_now': itm.price_now,
+                 'price_old': itm.price_old,
+                 'image_url': itm.image.url if itm.image else None,
+                 'status': itm.status
+             }
+         )
 
-    return JsonResponse({'results': data})
+     return JsonResponse({'results': data})
+# def product_rest_list(request):
+#     object_list = Product.objects.all()
+#     data = []
+
+#     for itm in object_list:
+#         data.append(
+#             {
+#                 'id': itm.id,
+#                 'name': itm.name,
+#                 'price_now': itm.price_now,
+#                 'price_old': itm.price_old,
+#                 'image_url': itm.image.url if itm.image else None,
+#                 'status': itm.status
+#             }
+#         )
+    
+#     return Response(data)
+
